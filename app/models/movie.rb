@@ -4,4 +4,7 @@ class Movie < ApplicationRecord
 
   has_many :inferior_comparisons, foreign_key: :inferior_movie_id, class_name: "Comparison"
   has_many :superior_movies, through: :inferior_comparisons
+
+  has_many :fans, through: :superior_comparisons, source: :user
+  has_many :hater, through: :inferior_comparisons, source: :user
 end
